@@ -29,14 +29,6 @@ export const SearchProvider = ({ children }) => {
             section: 'Home',
             perform: () => router.push('/'),
           },
-          {
-            id: 'recipes',
-            name: 'Recipes',
-            keywords: '',
-            shortcut: ['p'],
-            section: 'Home',
-            perform: () => router.push('/recipes'),
-          },
         ],
         onSearchDocumentsLoad(json) {
           return json.map((post: CoreContent<Blog>) => ({
