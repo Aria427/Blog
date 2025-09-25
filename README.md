@@ -288,10 +288,6 @@ canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-t
 
 ## Deploy
 
-### GitHub Pages
-
-A [`pages.yml`](.github/workflows/pages.yml) workflow is already provided. Simply select "GitHub Actions" in: `Settings > Pages > Build and deployment > Source`.
-
 ### Vercel
 
 The easiest way to deploy the template is to deploy on [Vercel](https://vercel.com). Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
