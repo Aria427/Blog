@@ -59,7 +59,7 @@ npx degit 'timlrx/tailwind-nextjs-starter-blog'
 ## Installation
 
 ```bash
-yarn
+npm i
 ```
 
 Please note, that if you are using Windows, you may need to run:
@@ -73,7 +73,7 @@ $env:PWD = $(Get-Location).Path
 First, run the development server:
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -85,8 +85,6 @@ Edit the layout in `app` or content in `data`. With live reloading, the pages au
 `data/siteMetadata.js` - contains most of the site related information which should be modified for a user's need.
 
 `data/authors/default.md` - default author information (required). Additional authors can be added as files in `data/authors`.
-
-`data/projectsData.js` - data used to generate styled card on the projects page.
 
 `data/headerNavLinks.js` - navigation links.
 
