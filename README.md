@@ -22,7 +22,6 @@
 - [Github alerts](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts) via [remark-github-blockquote-alert](https://github.com/jaywcjlove/remark-github-blockquote-alert)
 - Automatic image optimization via [next/image](https://nextjs.org/docs/basic-features/image-optimization)
 - Support for tags - each unique tag will be its own page
-- Support for multiple authors
 - 3 different blog layouts
 - 2 different blog listing layouts
 - Support for nested routing of blog posts
@@ -50,11 +49,10 @@ npx degit 'timlrx/tailwind-nextjs-starter-blog'
 2. Personalize `siteMetadata.js` (site related information)
 3. Modify the content security policy in `next.config.js` if you want to use
    other analytics provider or a commenting solution other than giscus.
-4. Personalize `authors/default.md` (main author)
-5. Modify `projectsData.ts`
-6. Modify `headerNavLinks.ts` to customize navigation links
-7. Add blog posts
-8. Deploy on Vercel
+4. Modify `projectsData.ts`
+5. Modify `headerNavLinks.ts` to customize navigation links
+6. Add blog posts
+7. Deploy on Vercel
 
 ## Installation
 
@@ -84,8 +82,6 @@ Edit the layout in `app` or content in `data`. With live reloading, the pages au
 
 `data/siteMetadata.js` - contains most of the site related information which should be modified for a user's need.
 
-`data/authors/default.md` - default author information (required). Additional authors can be added as files in `data/authors`.
-
 `data/headerNavLinks.js` - navigation links.
 
 `data/logo.svg` - replace with your own logo.
@@ -104,7 +100,7 @@ Edit the layout in `app` or content in `data`. With live reloading, the pages au
 
 `layouts` - main templates used in pages:
 
-- There are currently 3 post layouts available: `PostLayout`, `PostSimple` and `PostBanner`. `PostLayout` is the default 2 column layout with meta and author information. `PostSimple` is a simplified version of `PostLayout`, while `PostBanner` features a banner image.
+- There are currently 3 post layouts available: `PostLayout`, `PostSimple` and `PostBanner`. `PostLayout` is the default 2 column layout with meta information. `PostSimple` is a simplified version of `PostLayout`, while `PostBanner` features a banner image.
 - There are 2 blog listing layouts: `ListLayout`, the layout used in version 1 of the template with a search bar and `ListLayoutWithTags`, currently used in version 2, which omits the search bar but includes a sidebar with information on the tags.
 
 `app` - pages to route to. Read the [Next.js documentation](https://nextjs.org/docs/app) for more information.
@@ -129,7 +125,6 @@ lastmod (optional)
 draft (optional)
 summary (optional)
 images (optional)
-authors (optional list which should correspond to the file names in `data/authors`. Uses `default` if none is specified)
 layout (optional list which should correspond to the file names in `data/layouts`)
 canonicalUrl (optional, canonical url for the post for SEO)
 ```
@@ -145,7 +140,6 @@ tags: ['next-js', 'tailwind', 'guide']
 draft: false
 summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
 images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
-authors: ['default', 'sparrowhawk']
 layout: PostLayout
 canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-tailwind-nextjs-starter-blog
 ---
