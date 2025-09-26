@@ -1,36 +1,36 @@
-import { ReactNode } from 'react'
-import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
-import Comments from '@/components/Comments'
-import Link from '@/components/Link'
-import PageTitle from '@/components/PageTitle'
-import SectionContainer from '@/components/SectionContainer'
-import Image from '@/components/Image'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
-import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import { ReactNode } from 'react';
+import { CoreContent } from 'pliny/utils/contentlayer';
+import type { Blog } from 'contentlayer/generated';
+import Comments from '@/components/Comments';
+import Link from '@/components/Link';
+import PageTitle from '@/components/PageTitle';
+import SectionContainer from '@/components/SectionContainer';
+import Image from '@/components/Image';
+import Tag from '@/components/Tag';
+import siteMetadata from '@/data/siteMetadata';
+import ScrollTopAndComment from '@/components/ScrollTopAndComment';
 
-const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
+const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`;
 const discussUrl = (path) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`
+  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`;
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
   year: 'numeric',
   month: 'long',
   day: 'numeric',
-}
+};
 
 interface LayoutProps {
-  content: CoreContent<Blog>
-  next?: { path: string; title: string }
-  prev?: { path: string; title: string }
-  children: ReactNode
+  content: CoreContent<Blog>;
+  next?: { path: string; title: string };
+  prev?: { path: string; title: string };
+  children: ReactNode;
 }
 
 export default function PostLayout({ content, next, prev, children }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags } = content
-  const basePath = path.split('/')[0]
+  const { filePath, path, slug, date, title, tags } = content;
+  const basePath = path.split('/')[0];
 
   return (
     <SectionContainer>
@@ -60,7 +60,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
               <dd>
                 <div className="flex items-center space-x-2">
                   {/* If you want to show an avatar, add siteMetadata.avatar and use <Image src={siteMetadata.avatar} ... /> */}
-                  <dl className="whitespace-nowrap text-sm font-medium leading-5">
+                  <dl className="text-sm leading-5 font-medium whitespace-nowrap">
                     <dt className="sr-only">Name</dt>
                     <dd className="text-gray-900 dark:text-gray-100">{siteMetadata.author}</dd>
                   </dl>
@@ -138,5 +138,5 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
         </div>
       </article>
     </SectionContainer>
-  )
+  );
 }

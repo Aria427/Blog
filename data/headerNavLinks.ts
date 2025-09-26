@@ -4,6 +4,6 @@ const headerNavLinks = [
   { href: '/recipes', title: 'Recipes' },
   { href: '/tags', title: 'Tags' },
   { href: '/about', title: 'About' },
-]
+];
 
-export default headerNavLinks
+export default headerNavLinks;

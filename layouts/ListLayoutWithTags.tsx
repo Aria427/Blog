@@ -1,36 +1,36 @@
-'use client'
+'use client';
 
-import { usePathname } from 'next/navigation'
-import { slug } from 'github-slugger'
-import { formatDate } from 'pliny/utils/formatDate'
-import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog, Recipes } from 'contentlayer/generated'
-import Link from '@/components/Link'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
-import tagData from 'app/tag-data.json'
+import { usePathname } from 'next/navigation';
+import { slug } from 'github-slugger';
+import { formatDate } from 'pliny/utils/formatDate';
+import { CoreContent } from 'pliny/utils/contentlayer';
+import type { Blog, Recipes } from 'contentlayer/generated';
+import Link from '@/components/Link';
+import Tag from '@/components/Tag';
+import siteMetadata from '@/data/siteMetadata';
+import tagData from 'app/tag-data.json';
 
 interface PaginationProps {
-  totalPages: number
-  currentPage: number
+  totalPages: number;
+  currentPage: number;
 }
 interface ListLayoutProps {
-  posts: CoreContent<Blog | Recipes>[]
-  title: string
-  initialDisplayPosts?: CoreContent<Blog | Recipes>[]
-  pagination?: PaginationProps
+  posts: CoreContent<Blog | Recipes>[];
+  title: string;
+  initialDisplayPosts?: CoreContent<Blog | Recipes>[];
+  pagination?: PaginationProps;
 }
 
 function Pagination({ totalPages, currentPage }: PaginationProps) {
-  const pathname = usePathname()
-  const segments = pathname.split('/')
-  const lastSegment = segments[segments.length - 1]
+  const pathname = usePathname();
+  const segments = pathname.split('/');
+  const lastSegment = segments[segments.length - 1];
   const basePath = pathname
     .replace(/^\//, '') // Remove leading slash
     .replace(/\/page\/\d+\/?$/, '') // Remove any trailing /page
-    .replace(/\/$/, '') // Remove trailing slash
-  const prevPage = currentPage - 1 > 0
-  const nextPage = currentPage + 1 <= totalPages
+    .replace(/\/$/, ''); // Remove trailing slash
+  const prevPage = currentPage - 1 > 0;
+  const nextPage = currentPage + 1 <= totalPages;
 
   return (
     <div className="space-y-2 pt-6 pb-8 md:space-y-5">
@@ -63,7 +63,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
         )}
       </nav>
     </div>
-  )
+  );
 }
 
 export default function ListLayoutWithTags({
@@ -72,20 +72,20 @@ export default function ListLayoutWithTags({
   initialDisplayPosts = [],
   pagination,
 }: ListLayoutProps) {
-  const pathname = usePathname()
-  let tagCounts = tagData as Record<string, number>
+  const pathname = usePathname();
+  let tagCounts = tagData as Record<string, number>;
   // Filter tags for recipes only if on recipes page
   if (pathname.startsWith('/recipes')) {
     // Only include tags that exist in the recipe posts
-    const recipeTags = new Set(posts.flatMap((post) => post.tags || []))
+    const recipeTags = new Set(posts.flatMap((post) => post.tags || []));
     tagCounts = Object.fromEntries(
       Object.entries(tagCounts).filter(([tag]) => recipeTags.has(tag))
-    )
+    );
   }
-  const tagKeys = Object.keys(tagCounts)
-  const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
+  const tagKeys = Object.keys(tagCounts);
+  const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a]);
 
-  const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
+  const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts;
 
   return (
     <>
@@ -128,7 +128,7 @@ export default function ListLayoutWithTags({
                         </Link>
                       )}
                     </li>
-                  )
+                  );
                 })}
               </ul>
             </div>
@@ -136,7 +136,7 @@ export default function ListLayoutWithTags({
           <div>
             <ul>
               {displayPosts.map((post) => {
-                const { path, date, title, summary, tags } = post
+                const { path, date, title, summary, tags } = post;
                 return (
                   <li key={path} className="py-5">
                     <article className="flex flex-col space-y-2 xl:space-y-0">
@@ -156,7 +156,9 @@ export default function ListLayoutWithTags({
                             </Link>
                           </h2>
                           <div className="flex flex-wrap">
-                            {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                            {tags?.map((tag) => (
+                              <Tag key={tag} text={tag} />
+                            ))}
                           </div>
                         </div>
                         <div className="prose max-w-none text-gray-500 dark:text-gray-400">
@@ -165,7 +167,7 @@ export default function ListLayoutWithTags({
                       </div>
                     </article>
                   </li>
-                )
+                );
               })}
             </ul>
             {pagination && pagination.totalPages > 1 && (
@@ -175,5 +177,5 @@ export default function ListLayoutWithTags({
         </div>
       </div>
     </>
-  )
+  );
 }
