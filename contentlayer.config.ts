@@ -3,16 +3,9 @@ export const Author = defineDocumentType(() => ({
   filePathPattern: 'author/default.mdx',
   contentType: 'mdx',
   fields: {
-    name: { type: 'string', required: true },
+    name: { type: 'string' },
     avatar: { type: 'string' },
-    occupation: { type: 'string' },
-    company: { type: 'string' },
-    email: { type: 'string' },
-    twitter: { type: 'string' },
-    bluesky: { type: 'string' },
-    linkedin: { type: 'string' },
-    github: { type: 'string' },
-    layout: { type: 'string' },
+    role: { type: 'string' },
   },
   computedFields,
 }))
