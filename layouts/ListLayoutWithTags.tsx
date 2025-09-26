@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
+import type { Blog, Recipes } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
@@ -15,9 +15,9 @@ interface PaginationProps {
   currentPage: number
 }
 interface ListLayoutProps {
-  posts: CoreContent<Blog>[]
+  posts: CoreContent<Blog | Recipes>[]
   title: string
-  initialDisplayPosts?: CoreContent<Blog>[]
+  initialDisplayPosts?: CoreContent<Blog | Recipes>[]
   pagination?: PaginationProps
 }
 
@@ -73,7 +73,15 @@ export default function ListLayoutWithTags({
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname()
-  const tagCounts = tagData as Record<string, number>
+  let tagCounts = tagData as Record<string, number>
+  // Filter tags for recipes only if on recipes page
+  if (pathname.startsWith('/recipes')) {
+    // Only include tags that exist in the recipe posts
+    const recipeTags = new Set(posts.flatMap((post) => post.tags || []))
+    tagCounts = Object.fromEntries(
+      Object.entries(tagCounts).filter(([tag]) => recipeTags.has(tag))
+    )
+  }
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
 
@@ -92,6 +100,8 @@ export default function ListLayoutWithTags({
             <div className="px-6 py-4">
               {pathname.startsWith('/blog') ? (
                 <h3 className="text-primary-500 font-bold uppercase">All Posts</h3>
+              ) : pathname.startsWith('/recipes') ? (
+                <h3 className="text-primary-500 font-bold uppercase">All Recipes</h3>
               ) : (
                 <Link
                   href={`/blog`}
