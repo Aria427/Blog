@@ -3,7 +3,7 @@ import { allRecipes } from 'contentlayer/generated';
 import { genPageMetadata } from 'app/seo';
 import ListLayout from '@/layouts/ListLayoutWithTags';
 
-const POSTS_PER_PAGE = 5;
+const POSTS_PER_PAGE = 4;
 
 export const metadata = genPageMetadata({ title: 'Recipes' });
 

@@ -6,7 +6,7 @@ import blogTagData from 'app/tag-data.blog.json';
 import recipeTagData from 'app/tag-data.recipe.json';
 import { notFound } from 'next/navigation';
 
-const POSTS_PER_PAGE = 5;
+const POSTS_PER_PAGE = 4;
 
 export const generateStaticParams = async () => {
   // Combine tag counts from both blog and recipe
