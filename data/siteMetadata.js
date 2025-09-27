@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'The Wandering Gourmet',
+  title: 'Nomad Gourmet Chronicles',
   author: 'Sara Ann Abdilla',
-  headerTitle: 'The Wandering Gourmet',
+  headerTitle: 'Nomad Gourmet Chronicles',
   description: 'Where travel tales meet kitchen-tested recipes.',
   language: 'en-gb',
   theme: 'system', // system, dark or light

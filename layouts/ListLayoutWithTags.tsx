@@ -8,7 +8,8 @@ import type { Blog, Recipes } from 'contentlayer/generated';
 import Link from '@/components/Link';
 import Tag from '@/components/Tag';
 import siteMetadata from '@/data/siteMetadata';
-import tagData from 'app/tag-data.json';
+import blogTagData from 'app/tag-data.blog.json';
+import recipeTagData from 'app/tag-data.recipe.json';
 
 interface PaginationProps {
   totalPages: number;
@@ -73,14 +74,11 @@ export default function ListLayoutWithTags({
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname();
-  let tagCounts = tagData as Record<string, number>;
-  // Filter tags for recipes only if on recipes page
+  let tagCounts: Record<string, number>;
   if (pathname.startsWith('/recipes')) {
-    // Only include tags that exist in the recipe posts
-    const recipeTags = new Set(posts.flatMap((post) => post.tags || []));
-    tagCounts = Object.fromEntries(
-      Object.entries(tagCounts).filter(([tag]) => recipeTags.has(tag))
-    );
+    tagCounts = recipeTagData as Record<string, number>;
+  } else {
+    tagCounts = blogTagData as Record<string, number>;
   }
   const tagKeys = Object.keys(tagCounts);
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a]);

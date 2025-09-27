@@ -74,21 +74,26 @@ const computedFields: ComputedFields = {
  * Count the occurrences of all tags across blog posts and write to json file
  */
 async function createTagCount(allBlogs) {
-  const tagCount: Record<string, number> = {};
+  // Split tag counts for blog and recipe posts
+  const blogTagCount: Record<string, number> = {};
+  const recipeTagCount: Record<string, number> = {};
   allBlogs.forEach((file) => {
     if (file.tags && (!isProduction || file.draft !== true)) {
       file.tags.forEach((tag) => {
         const formattedTag = slug(tag);
-        if (formattedTag in tagCount) {
-          tagCount[formattedTag] += 1;
-        } else {
-          tagCount[formattedTag] = 1;
+        // Use 'type' property instead of '_type' for compatibility
+        if (file.type === 'Blog') {
+          blogTagCount[formattedTag] = (blogTagCount[formattedTag] || 0) + 1;
+        } else if (file.type === 'Recipes') {
+          recipeTagCount[formattedTag] = (recipeTagCount[formattedTag] || 0) + 1;
         }
       });
     }
   });
-  const formatted = await prettier.format(JSON.stringify(tagCount, null, 2), { parser: 'json' });
-  writeFileSync('./app/tag-data.json', formatted);
+  const formattedBlog = await prettier.format(JSON.stringify(blogTagCount, null, 2), { parser: 'json' });
+  const formattedRecipe = await prettier.format(JSON.stringify(recipeTagCount, null, 2), { parser: 'json' });
+  writeFileSync('./app/tag-data.blog.json', formattedBlog);
+  writeFileSync('./app/tag-data.recipe.json', formattedRecipe);
 }
 
 function createSearchIndex(allBlogs) {
