@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Nomad Gourmet Chronicles',
   author: 'Sara Ann Abdilla',
   headerTitle: 'Nomad Gourmet Chronicles',
-  description: 'Where travel tales meet kitchen-tested recipes.',
+  description: 'Where travel tales meet personally tested recipes.',
   language: 'en-gb',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',

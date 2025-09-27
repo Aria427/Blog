@@ -121,9 +121,9 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                 <Link
                   href={`/${basePath}`}
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                  aria-label="Back to the blog"
+                  aria-label="Back to the list"
                 >
-                  &larr; Back to the blog
+                  &larr; Back to the list
                 </Link>
               </div>
             </footer>
