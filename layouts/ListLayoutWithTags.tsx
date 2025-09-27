@@ -74,11 +74,17 @@ export default function ListLayoutWithTags({
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname();
+  // Show only blog tags on blog pages, only recipe tags on recipe pages, combined tags elsewhere
   let tagCounts: Record<string, number>;
-  if (pathname.startsWith('/recipes')) {
-    tagCounts = recipeTagData as Record<string, number>;
+  if (pathname.startsWith('/blog')) {
+    tagCounts = blogTagData;
+  } else if (pathname.startsWith('/recipes')) {
+    tagCounts = recipeTagData;
   } else {
-    tagCounts = blogTagData as Record<string, number>;
+    tagCounts = { ...blogTagData };
+    for (const [tag, count] of Object.entries(recipeTagData)) {
+      tagCounts[tag] = (tagCounts[tag] || 0) + count;
+    }
   }
   const tagKeys = Object.keys(tagCounts);
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a]);

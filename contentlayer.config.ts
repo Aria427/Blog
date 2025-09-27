@@ -78,10 +78,10 @@ async function createTagCount(allBlogs) {
   const blogTagCount: Record<string, number> = {};
   const recipeTagCount: Record<string, number> = {};
   allBlogs.forEach((file) => {
-    if (file.tags && (!isProduction || file.draft !== true)) {
+    if (file.draft === true) return;
+    if (file.tags) {
       file.tags.forEach((tag) => {
         const formattedTag = slug(tag);
-        // Use 'type' property instead of '_type' for compatibility
         if (file.type === 'Blog') {
           blogTagCount[formattedTag] = (blogTagCount[formattedTag] || 0) + 1;
         } else if (file.type === 'Recipes') {

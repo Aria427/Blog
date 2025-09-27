@@ -7,6 +7,8 @@ import NewsletterForm from 'pliny/ui/NewsletterForm'
 const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
+  // Filter out draft posts
+  const filteredPosts = posts.filter((post) => post.draft !== true);
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -19,8 +21,8 @@ export default function Home({ posts }) {
           </p>
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((post) => {
+          {!filteredPosts.length && 'No posts found.'}
+          {filteredPosts.slice(0, MAX_DISPLAY).map((post) => {
             const { slug, date, title, summary, tags, type } = post;
             // Use a unique key combining type and slug
             const uniqueKey = `${type || 'post'}-${slug}`;
@@ -72,7 +74,7 @@ export default function Home({ posts }) {
           })}
         </ul>
       </div>
-      {posts.length > MAX_DISPLAY && (
+      {filteredPosts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base leading-6 font-medium">
           <Link
             href="/blog"

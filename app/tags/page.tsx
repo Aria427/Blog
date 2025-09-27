@@ -1,14 +1,20 @@
 import Link from '@/components/Link';
 import Tag from '@/components/Tag';
 import { slug } from 'github-slugger';
-import tagData from 'app/tag-data.json';
+import blogTagData from 'app/tag-data.blog.json';
+import recipeTagData from 'app/tag-data.recipe.json';
 import { genPageMetadata } from 'app/seo';
 
 export const metadata = genPageMetadata({ title: 'Tags', description: 'Things I blog about' });
 
 export default async function Page() {
-  const tagCounts = tagData as Record<string, number>;
-  const tagKeys = Object.keys(tagCounts);
+  // Combine tag counts from both blog and recipe
+  // Only show tags with count > 0 (already filtered by draft in tag count generation)
+  const tagCounts: Record<string, number> = { ...blogTagData };
+  for (const [tag, count] of Object.entries(recipeTagData)) {
+    tagCounts[tag] = (tagCounts[tag] || 0) + count;
+  }
+  const tagKeys = Object.keys(tagCounts).filter((tag) => tagCounts[tag] > 0);
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a]);
   return (
     <>

@@ -3,7 +3,8 @@ import path from 'path';
 import { slug } from 'github-slugger';
 import { escape } from 'pliny/utils/htmlEscaper.js';
 import siteMetadata from '../data/siteMetadata.js';
-import tagData from '../app/tag-data.json' with { type: 'json' };
+import blogTagData from '../app/tag-data.blog.json' with { type: 'json' };
+import recipeTagData from '../app/tag-data.recipe.json' with { type: 'json' };
 import { allBlogs } from '../.contentlayer/generated/index.mjs';
 import { sortPosts } from 'pliny/utils/contentlayer.js';
 
@@ -45,8 +46,13 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
     writeFileSync(`./${outputFolder}/${page}`, rss);
   }
 
+  // Combine tag counts from both blog and recipe
+  const tagCounts = { ...blogTagData };
+  for (const [tag, count] of Object.entries(recipeTagData)) {
+    tagCounts[tag] = (tagCounts[tag] || 0) + count;
+  }
   if (publishPosts.length > 0) {
-    for (const tag of Object.keys(tagData)) {
+    for (const tag of Object.keys(tagCounts)) {
       const filteredPosts = allBlogs.filter((post) => post.tags.map((t) => slug(t)).includes(tag));
       const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`);
       const rssPath = path.join(outputFolder, 'tags', tag);
