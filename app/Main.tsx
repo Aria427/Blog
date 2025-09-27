@@ -26,6 +26,8 @@ export default function Home({ posts }) {
             const { slug, date, title, summary, tags, type } = post;
             // Use a unique key combining type and slug
             const uniqueKey = `${type || 'post'}-${slug}`;
+            // Determine correct prefix for link
+            const prefix = type === 'Recipes' ? '/recipes/' : '/blog/';
             return (
               <li key={uniqueKey} className="py-12">
                 <article>
@@ -41,7 +43,7 @@ export default function Home({ posts }) {
                         <div>
                           <h2 className="text-2xl leading-8 font-bold tracking-tight">
                             <Link
-                              href={`/blog/${slug}`}
+                              href={`${prefix}${slug}`}
                               className="text-gray-900 dark:text-gray-100"
                             >
                               {title}
@@ -59,7 +61,7 @@ export default function Home({ posts }) {
                       </div>
                       <div className="text-base leading-6 font-medium">
                         <Link
-                          href={`/blog/${slug}`}
+                          href={`${prefix}${slug}`}
                           className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                           aria-label={`Read more: "${title}"`}
                         >

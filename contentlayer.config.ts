@@ -57,7 +57,10 @@ const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
     type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ''),
+    resolve: (doc) => {
+      // Remove 'blog/' and 'recipes/' prefixes for clean slugs
+      return doc._raw.flattenedPath.replace(/^blog\//, '').replace(/^recipes\//, '');
+    },
   },
   path: {
     type: 'string',
