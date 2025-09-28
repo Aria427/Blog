@@ -36,8 +36,10 @@ export default function AuthorLayout({ children, content }: Props) {
               <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
               <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
               <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
+              {/*
               <SocialIcon kind="github" href={siteMetadata.github} size={6} />
               <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
+              */}
             </div>
           </div>
           <div className="prose dark:prose-invert max-w-none pt-8 pb-8 xl:col-span-2">
