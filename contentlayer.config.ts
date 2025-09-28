@@ -104,11 +104,13 @@ function createSearchIndex(allBlogs) {
     siteMetadata?.search?.provider === 'kbar' &&
     siteMetadata.search.kbarConfig.searchDocumentsPath
   ) {
+    // Exclude drafts from search index
+    const published = allBlogs.filter((file) => file.draft !== true);
     writeFileSync(
       `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
-      JSON.stringify(allCoreContent(sortPosts(allBlogs)))
+      JSON.stringify(allCoreContent(sortPosts(published)))
     );
-    console.log('Local search index generated...');
+    console.log('Local search index generated (drafts excluded)...');
   }
 }
 
