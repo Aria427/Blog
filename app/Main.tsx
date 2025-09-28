@@ -22,7 +22,7 @@ export default function Home({ posts }) {
   
   return (
     <>
-      <div className="flex flex-col xl:flex-row gap-8 xl:gap-16 pt-6">
+      <div className="flex flex-col lg:flex-row gap-8 xl:gap-16 pt-6">
         {/* About Section (Left) */}
         <AuthorLayout content={mainContent}>
           <div className="text-justify">

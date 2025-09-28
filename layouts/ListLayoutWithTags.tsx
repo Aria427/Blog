@@ -99,7 +99,7 @@ export default function ListLayoutWithTags({
             {title}
           </h1>
         </div>
-        <div className="flex sm:space-x-24">
+        <div className="flex flex-col items-center sm:flex-row sm:space-x-24">
           <div>
             <ul>
               {displayPosts.map((post) => {
@@ -128,7 +128,7 @@ export default function ListLayoutWithTags({
                             ))}
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                        <div className="prose max-w-none text-gray-500 dark:text-gray-400 text-justify">
                           {summary}
                         </div>
                       </div>
@@ -141,7 +141,7 @@ export default function ListLayoutWithTags({
               <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
             )}
           </div>
-          <div className="hidden h-full max-h-screen max-w-[280px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md sm:flex dark:bg-gray-900/70 dark:shadow-gray-800/40">
+          <div className="flex h-full max-h-screen max-w-[280px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 mt-8 sm:mt-0 mx-auto">
             <div className="px-6 py-4">
               {(pathname.startsWith('/recipes') || pathname.startsWith('/tags/recipe')) ? (
                 pathname === '/recipes' ? (
