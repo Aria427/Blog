@@ -76,14 +76,14 @@ export default function ListLayoutWithTags({
   const pathname = usePathname();
   // Show only blog tags on blog pages, only recipe tags on recipe pages, combined tags elsewhere
   let tagCounts: Record<string, number>;
-  if (pathname.startsWith('/blog')) {
+  if (pathname.startsWith('/blog') || (pathname.startsWith('/tags/blog') && !pathname.startsWith('/tags/recipe'))) {
     tagCounts = blogTagData;
-  } else if (pathname.startsWith('/recipes')) {
+  } else if (pathname.startsWith('/recipes') || (pathname.startsWith('/tags/recipe') && !pathname.startsWith('/tags/blog'))) {
     tagCounts = recipeTagData;
   } else {
     tagCounts = { ...blogTagData };
     for (const [tag, count] of Object.entries(recipeTagData)) {
-      tagCounts[tag] = (tagCounts[tag] || 0) + count;
+      tagCounts[tag] = (tagCounts[tag] || 0) + Number(count);
     }
   }
   const tagKeys = Object.keys(tagCounts);
@@ -100,43 +100,6 @@ export default function ListLayoutWithTags({
           </h1>
         </div>
         <div className="flex sm:space-x-24">
-          <div className="hidden h-full max-h-screen max-w-[280px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md sm:flex dark:bg-gray-900/70 dark:shadow-gray-800/40">
-            <div className="px-6 py-4">
-              {pathname.startsWith('/blog') ? (
-                <h3 className="text-primary-500 font-bold uppercase">All Posts</h3>
-              ) : pathname.startsWith('/recipes') ? (
-                <h3 className="text-primary-500 font-bold uppercase">All Recipes</h3>
-              ) : (
-                <Link
-                  href={`/blog`}
-                  className="hover:text-primary-500 dark:hover:text-primary-500 font-bold text-gray-700 uppercase dark:text-gray-300"
-                >
-                  All Posts
-                </Link>
-              )}
-              <ul>
-                {sortedTags.map((t) => {
-                  return (
-                    <li key={t} className="my-3">
-                      {decodeURI(pathname.split('/tags/')[1]) === slug(t) ? (
-                        <h3 className="text-primary-500 inline px-3 py-2 text-sm font-bold uppercase">
-                          {`${t} (${tagCounts[t]})`}
-                        </h3>
-                      ) : (
-                        <Link
-                          href={`/tags/${slug(t)}`}
-                          className="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-500 uppercase dark:text-gray-300"
-                          aria-label={`View posts tagged ${t}`}
-                        >
-                          {`${t} (${tagCounts[t]})`}
-                        </Link>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
           <div>
             <ul>
               {displayPosts.map((post) => {
@@ -177,6 +140,64 @@ export default function ListLayoutWithTags({
             {pagination && pagination.totalPages > 1 && (
               <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
             )}
+          </div>
+          <div className="hidden h-full max-h-screen max-w-[280px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md sm:flex dark:bg-gray-900/70 dark:shadow-gray-800/40">
+            <div className="px-6 py-4">
+              {(pathname.startsWith('/recipes') || pathname.startsWith('/tags/recipe')) ? (
+                pathname === '/recipes' ? (
+                  <h3 className="font-bold text-primary-500 uppercase">All Recipes</h3>
+                ) : (
+                  <Link
+                    href="/recipes"
+                    className="hover:text-primary-500 dark:hover:text-primary-500 font-bold text-gray-700 uppercase dark:text-gray-300"
+                  >
+                    All Recipes
+                  </Link>
+                )
+              ) : (pathname.startsWith('/blog') || pathname.startsWith('/tags/blog')) ? (
+                pathname === '/blog' ? (
+                  <h3 className="font-bold text-primary-500 uppercase">All Posts</h3>
+                ) : (
+                  <Link
+                    href="/blog"
+                    className="hover:text-primary-500 dark:hover:text-primary-500 font-bold text-gray-700 uppercase dark:text-gray-300"
+                  >
+                    All Posts
+                  </Link>
+                )
+              ) : (
+                <Link
+                  href="/blog"
+                  className="hover:text-primary-500 dark:hover:text-primary-500 font-bold text-gray-700 uppercase dark:text-gray-300"
+                >
+                  All Posts
+                </Link>
+              )}
+              <ul>
+                {sortedTags.map((t) => {
+                  const tagSlug = slug(t);
+                  const selectedTag = decodeURI(pathname.split('/tags/')[1]);
+                  const highlightTag = selectedTag === tagSlug;
+                  return (
+                    <li key={t} className="my-3">
+                      {highlightTag ? (
+                        <h3 className="text-primary-500 inline px-3 py-2 text-sm font-bold uppercase">
+                          {`${t} (${tagCounts[t]})`}
+                        </h3>
+                      ) : (
+                        <Link
+                          href={`/tags/${tagSlug}`}
+                          className="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-500 uppercase dark:text-gray-300"
+                          aria-label={`View posts tagged ${t}`}
+                        >
+                          {`${t} (${tagCounts[t]})`}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

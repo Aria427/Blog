@@ -33,7 +33,6 @@ export async function generateMetadata(props: {
 
   const publishedAt = new Date(post.date).toISOString();
   const modifiedAt = new Date(post.lastmod || post.date).toISOString();
-  const author = siteMetadata.author;
   let imageList = [siteMetadata.socialBanner];
   if (post.images) {
     imageList = typeof post.images === 'string' ? [post.images] : post.images;
@@ -51,7 +50,7 @@ export async function generateMetadata(props: {
       title: post.title,
       description: post.summary,
       siteName: siteMetadata.title,
-      locale: 'en_US',
+      locale: 'en_GB',
       type: 'article',
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
@@ -81,8 +80,12 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
     return notFound();
   }
 
-  const prev = sortedCoreContents[postIndex + 1];
-  const next = sortedCoreContents[postIndex - 1];
+  // Only use non-draft posts for next/prev navigation
+  const nonDraftPosts = sortedCoreContents.filter((p) => !p.draft);
+  const navIndex = nonDraftPosts.findIndex((p) => p.slug === slug);
+  const prev = navIndex !== -1 ? nonDraftPosts[navIndex + 1] : undefined;
+  const next = navIndex !== -1 ? nonDraftPosts[navIndex - 1] : undefined;
+
   const post = allBlogs.find((p) => p.slug === slug) as Blog;
   const mainContent = coreContent(post);
   const jsonLd = post.structuredData;

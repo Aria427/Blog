@@ -12,7 +12,7 @@ export default async function Page() {
   // Only show tags with count > 0 (already filtered by draft in tag count generation)
   const tagCounts: Record<string, number> = { ...blogTagData };
   for (const [tag, count] of Object.entries(recipeTagData)) {
-    tagCounts[tag] = (tagCounts[tag] || 0) + count;
+    tagCounts[tag] = (tagCounts[tag] || 0) + Number(count);
   }
   const tagKeys = Object.keys(tagCounts).filter((tag) => tagCounts[tag] > 0);
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a]);

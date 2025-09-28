@@ -21,6 +21,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
   const { slug, title, images } = content;
   const displayImage =
     images && images.length > 0 ? images[0] : 'https://picsum.photos/seed/picsum/800/400';
+  const siteUrl = siteMetadata.siteUrl;
 
   return (
     <SectionContainer>
@@ -50,7 +51,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
               {prev && prev.path && (
                 <div className="pt-4 xl:pt-8">
                   <Link
-                    href={`/${prev.path}`}
+                    href={`${siteUrl + '/' + prev.path}`}
                     className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                     aria-label={`Previous post: ${prev.title}`}
                   >
@@ -61,7 +62,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
               {next && next.path && (
                 <div className="pt-4 xl:pt-8">
                   <Link
-                    href={`/${next.path}`}
+                    href={`${siteUrl + '/' + next.path}`}
                     className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                     aria-label={`Next post: ${next.title}`}
                   >

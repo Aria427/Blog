@@ -33,7 +33,6 @@ export async function generateMetadata(props: {
 
   const publishedAt = new Date(post.date).toISOString();
   const modifiedAt = new Date(post.lastmod || post.date).toISOString();
-  const author = siteMetadata.author;
   let imageList = [siteMetadata.socialBanner];
   if (post.images) {
     imageList = typeof post.images === 'string' ? [post.images] : post.images;
@@ -81,8 +80,12 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
     return notFound();
   }
 
-  const prev = sortedCoreContents[postIndex + 1];
-  const next = sortedCoreContents[postIndex - 1];
+  // Only use non-draft posts for next/prev navigation
+  const nonDraftPosts = sortedCoreContents.filter((p) => !p.draft);
+  const navIndex = nonDraftPosts.findIndex((p) => p.slug === slug);
+  const prev = navIndex !== -1 ? nonDraftPosts[navIndex + 1] : undefined;
+  const next = navIndex !== -1 ? nonDraftPosts[navIndex - 1] : undefined;
+
   const post = allRecipes.find((p) => p.slug === slug) as Recipes;
   const mainContent = coreContent(post);
   const jsonLd = post.structuredData;
