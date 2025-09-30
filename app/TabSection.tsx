@@ -27,7 +27,7 @@ const TabSection: React.FC<TabSectionProps> = ({ posts }) => {
   }, {});
   return (
     <div className="w-full">
-  <div className="mb-4 flex gap-4">
+      <div className="mb-4 flex gap-4">
         <button
           className={`rounded px-4 py-2 ${activeTab === 'blog' ? 'bg-primary-500 text-white' : 'bg-gray-200 dark:bg-gray-700'}`}
           onClick={() => setActiveTab('blog')}

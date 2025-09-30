@@ -3,10 +3,10 @@ import { MDXLayoutRenderer } from 'pliny/mdx-components';
 import AuthorLayout from '@/layouts/AuthorLayout';
 import { coreContent } from 'pliny/utils/contentlayer';
 import { genPageMetadata } from 'app/seo';
-import Link from '@/components/Link'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
-import { formatDate } from 'pliny/utils/formatDate'
+import Link from '@/components/Link';
+import Tag from '@/components/Tag';
+import siteMetadata from '@/data/siteMetadata';
+import { formatDate } from 'pliny/utils/formatDate';
 // import NewsletterForm from 'pliny/ui/NewsletterForm'
 
 export const metadata = genPageMetadata({ title: 'Home' });
@@ -22,7 +22,7 @@ export default function Home({ posts }) {
 
   return (
     <>
-      <div className="gap-8 pt-6 lg:flex-row flex flex-col xl:gap-16">
+      <div className="flex flex-col gap-8 pt-6 lg:flex-row xl:gap-16">
         {/* About Section (Left) */}
         <AuthorLayout content={mainContent}>
           <div className="text-justify">
@@ -42,7 +42,7 @@ export default function Home({ posts }) {
                   return (
                     <li key={`${type || 'post'}-${slug}`} className="mb-6">
                       <div className="space-y-1">
-                        <h4 className="font-bold text-lg">
+                        <h4 className="text-lg font-bold">
                           <Link
                             href={`${prefix}${slug}`}
                             className="text-gray-900 dark:text-gray-100"
