@@ -141,26 +141,26 @@ export default function ListLayoutWithTags({
               <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
             )}
           </div>
-          <div className="flex h-full max-h-screen max-w-[280px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 mt-8 sm:mt-0 mx-auto">
+          <div className="mx-auto mt-8 flex h-full max-h-screen max-w-[280px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md sm:mt-0 dark:bg-gray-900/70 dark:shadow-gray-800/40">
             <div className="px-6 py-4">
               {(pathname.startsWith('/recipes') || pathname.startsWith('/tags/recipe')) ? (
                 pathname === '/recipes' ? (
-                  <h3 className="font-bold text-primary-500 uppercase">All Recipes</h3>
+                  <h3 className="text-primary-500 font-bold uppercase">All Recipes</h3>
                 ) : (
                   <Link
                     href="/recipes"
-                    className="hover:text-primary-500 dark:hover:text-primary-500 font-bold text-gray-700 uppercase dark:text-gray-300"
+                    className="hover:text-primary-500 dark:hover:text-primary-500 text-gray-700 font-bold uppercase dark:text-gray-300"
                   >
                     All Recipes
                   </Link>
                 )
               ) : (pathname.startsWith('/blog') || pathname.startsWith('/tags/blog')) ? (
                 pathname === '/blog' ? (
-                  <h3 className="font-bold text-primary-500 uppercase">All Posts</h3>
+                  <h3 className="text-primary-500 font-bold uppercase">All Posts</h3>
                 ) : (
                   <Link
                     href="/blog"
-                    className="hover:text-primary-500 dark:hover:text-primary-500 font-bold text-gray-700 uppercase dark:text-gray-300"
+                    className="hover:text-primary-500 dark:hover:text-primary-500 text-gray-700 font-bold uppercase dark:text-gray-300"
                   >
                     All Posts
                   </Link>
@@ -168,7 +168,7 @@ export default function ListLayoutWithTags({
               ) : (
                 <Link
                   href="/blog"
-                  className="hover:text-primary-500 dark:hover:text-primary-500 font-bold text-gray-700 uppercase dark:text-gray-300"
+                  className="hover:text-primary-500 dark:hover:text-primary-500 text-gray-700 font-bold uppercase dark:text-gray-300"
                 >
                   All Posts
                 </Link>
@@ -181,13 +181,13 @@ export default function ListLayoutWithTags({
                   return (
                     <li key={t} className="my-3">
                       {highlightTag ? (
-                        <h3 className="text-primary-500 inline px-3 py-2 text-sm font-bold uppercase">
+                        <h3 className="text-primary-500 mb-4 font-bold uppercase inline px-3 py-2 text-sm">
                           {`${t} (${tagCounts[t]})`}
                         </h3>
                       ) : (
                         <Link
                           href={`/tags/${tagSlug}`}
-                          className="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-500 uppercase dark:text-gray-300"
+                          className="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm text-gray-500 font-medium uppercase dark:text-gray-300"
                           aria-label={`View posts tagged ${t}`}
                         >
                           {`${t} (${tagCounts[t]})`}
