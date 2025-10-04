@@ -1,3 +1,6 @@
 {
-  "recipe": 1
+  "recipe": 2,
+  "dessert": 1,
+  "gluten-free": 1,
+  "lactose-free": 1
 }
