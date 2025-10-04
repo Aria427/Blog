@@ -8,7 +8,7 @@ const siteMetadata = {
   theme: 'system', // system, dark or light
   siteUrl: process.env.NODE_ENV === 'development'
     ? 'http://localhost:3000'
-    : 'https://tailwind-nextjs-starter-blog.vercel.app',
+    : 'https://nomad-gourmet-chronicles.vercel.app/',
   siteRepo: 'https://github.com/Aria427/Blog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/logo-card.png`,
