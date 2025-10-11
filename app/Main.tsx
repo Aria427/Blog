@@ -11,7 +11,7 @@ import { formatDate } from 'pliny/utils/formatDate';
 
 export const metadata = genPageMetadata({ title: 'Home' });
 
-const MAX_DISPLAY = 4;
+const MAX_DISPLAY = 6;
 
 export default function Home({ posts }) {
   const author = allAuthors.find((p) => p.slug === 'author/default') as Author;

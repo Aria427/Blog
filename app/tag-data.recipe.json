@@ -1,7 +1,7 @@
 {
-  "recipe": 3,
-  "savoury": 1,
+  "recipe": 5,
+  "savoury": 3,
   "sweet": 2,
-  "gluten-free": 3,
-  "lactose-free": 3
+  "gluten-free": 5,
+  "lactose-free": 5
 }
