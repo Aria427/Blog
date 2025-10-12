@@ -5,22 +5,26 @@ import { escape } from 'pliny/utils/htmlEscaper.js';
 import siteMetadata from '../data/siteMetadata.js';
 import blogTagData from '../app/tag-data.blog.json' with { type: 'json' };
 import recipeTagData from '../app/tag-data.recipe.json' with { type: 'json' };
-import { allBlogs } from '../.contentlayer/generated/index.mjs';
+import { allBlogs, allRecipes } from '../.contentlayer/generated/index.mjs';
 import { sortPosts } from 'pliny/utils/contentlayer.js';
 
 const outputFolder = process.env.EXPORT ? 'out' : 'public';
 
-const generateRssItem = (config, post) => `
+const generateRssItem = (config, post) => {
+  // Determine the path based on post type
+  const postPath = post.type === 'Recipes' ? 'recipes' : 'blog';
+  return `
   <item>
-    <guid>${config.siteUrl}/blog/${post.slug}</guid>
+    <guid>${config.siteUrl}/${postPath}/${post.slug}</guid>
     <title>${escape(post.title)}</title>
-    <link>${config.siteUrl}/blog/${post.slug}</link>
+    <link>${config.siteUrl}/${postPath}/${post.slug}</link>
     ${post.summary && `<description>${escape(post.summary)}</description>`}
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>${config.email} (${config.author})</author>
     ${post.tags && post.tags.map((t) => `<category>${t}</category>`).join('')}
   </item>
 `;
+};
 
 /** Missing: <lastBuildDate>${new Date(posts[0].date).toUTCString()}</lastBuildDate> */
 const generateRss = (config, posts, page = 'feed.xml') => `
@@ -38,9 +42,12 @@ const generateRss = (config, posts, page = 'feed.xml') => `
   </rss>
 `;
 
-async function generateRSS(config, allBlogs, page = 'feed.xml') {
-  const publishPosts = allBlogs.filter((post) => post.draft !== true);
-  // RSS for blog post
+async function generateRSS(config, allBlogs, allRecipes, page = 'feed.xml') {
+  // Combine blogs and recipes, filter out drafts
+  const allPosts = [...allBlogs, ...allRecipes];
+  const publishPosts = allPosts.filter((post) => post.draft !== true);
+
+  // RSS for all posts (blogs and recipes combined)
   if (publishPosts.length > 0) {
     const rss = generateRss(config, sortPosts(publishPosts));
     writeFileSync(`./${outputFolder}/${page}`, rss);
@@ -53,7 +60,10 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
   }
   if (publishPosts.length > 0) {
     for (const tag of Object.keys(tagCounts)) {
-      const filteredPosts = allBlogs.filter((post) => post.tags.map((t) => slug(t)).includes(tag));
+      // Filter both blogs and recipes that have this tag
+      const filteredPosts = allPosts.filter(
+        (post) => post.tags && post.tags.map((t) => slug(t)).includes(tag) && post.draft !== true
+      );
       const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`);
       const rssPath = path.join(outputFolder, 'tags', tag);
       mkdirSync(rssPath, { recursive: true });
@@ -63,7 +73,7 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
 }
 
 const rss = () => {
-  generateRSS(siteMetadata, allBlogs);
+  generateRSS(siteMetadata, allBlogs, allRecipes);
   console.log('RSS feed generated...');
 };
 export default rss;

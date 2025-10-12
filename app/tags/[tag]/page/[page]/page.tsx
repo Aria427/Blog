@@ -29,24 +29,18 @@ export default async function TagPage(props: { params: Promise<{ tag: string; pa
   const tag = decodeURI(params.tag);
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1);
   const pageNumber = parseInt(params.page);
-  let filteredPosts;
-  if (recipeTagData[tag]) {
-    filteredPosts = allCoreContent(
-      sortPosts(
-        allRecipes.filter(
-          (post) => post.tags && post.tags.map((t) => slug(t)).includes(tag) && post.draft !== true
-        )
-      )
-    );
-  } else {
-    filteredPosts = allCoreContent(
-      sortPosts(
-        allBlogs.filter(
-          (post) => post.tags && post.tags.map((t) => slug(t)).includes(tag) && post.draft !== true
-        )
-      )
-    );
-  }
+
+  // Filter both blog and recipe posts that have this tag
+  const filteredBlogs = allBlogs.filter(
+    (post) => post.tags && post.tags.map((t) => slug(t)).includes(tag) && post.draft !== true
+  );
+  const filteredRecipes = allRecipes.filter(
+    (post) => post.tags && post.tags.map((t) => slug(t)).includes(tag) && post.draft !== true
+  );
+
+  // Combine and sort all posts with this tag
+  const filteredPosts = allCoreContent(sortPosts([...filteredBlogs, ...filteredRecipes]));
+
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
 
   // Return 404 for invalid page numbers or empty pages
