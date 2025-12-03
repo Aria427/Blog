@@ -1,8 +1,8 @@
 {
-  "recipe": 10,
+  "recipe": 11,
   "sweet": 5,
-  "gluten-free": 9,
-  "lactose-free": 9,
-  "savoury": 4,
+  "gluten-free": 10,
+  "lactose-free": 10,
+  "savoury": 5,
   "dough": 1
 }
