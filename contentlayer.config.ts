@@ -216,7 +216,7 @@ export default makeSource({
   },
   onSuccess: async (importData) => {
     const { allBlogs, allRecipes } = await importData();
-    createTagCount([...allBlogs, ...allRecipes]);
+    await createTagCount([...allBlogs, ...allRecipes]);
     createSearchIndex([...allBlogs, ...allRecipes]);
   },
 });
