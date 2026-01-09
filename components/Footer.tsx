@@ -1,6 +1,7 @@
 import Link from './Link';
 import siteMetadata from '@/data/siteMetadata';
 import SocialIcon from '@/components/social-icons';
+import DonateButton from './DonateButton';
 
 export default function Footer() {
   return (
@@ -20,6 +21,9 @@ export default function Footer() {
             <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
             <SocialIcon kind="medium" href={siteMetadata.medium} size={6} />
             */}
+        </div>
+        <div className="mb-4">
+          <DonateButton />
         </div>
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{`© ${new Date().getFullYear()}`}</div>

@@ -24,6 +24,9 @@ const siteMetadata = {
   instagram: 'https://www.instagram.com/sara_abdilla/',
   // medium: 'https://medium.com',
   // bluesky: 'https://bsky.app/',
+  // Donation links
+  revolut: 'https://revolut.me/sara2704',
+  paypal: 'https://paypal.me/SaraAnnAbdilla',
   locale: 'en-GB',
   // set to true if you want a navbar fixed to the top
   stickyNav: true,
