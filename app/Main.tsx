@@ -33,7 +33,7 @@ export default function Home({ blogs, recipes }) {
         {/* Latest Lists (Right) */}
         <div className="flex w-full flex-col gap-8 xl:w-1/3">
           {/* Latest Posts */}
-          <div className="mx-auto block h-full max-h-[400px] w-full max-w-[320px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40">
+          <div className="bg-primary-100 dark:bg-primary-950/20 mx-auto block h-full max-h-[400px] w-full max-w-[320px] min-w-[280px] flex-wrap overflow-auto rounded-sm pt-5 shadow-md dark:shadow-gray-800/40">
             <div className="px-6 py-4">
               <h3 className="text-primary-500 mb-4 font-bold uppercase">Latest Posts</h3>
               <ul>
@@ -71,7 +71,7 @@ export default function Home({ blogs, recipes }) {
           </div>
 
           {/* Latest Recipes */}
-          <div className="mx-auto block h-full max-h-[400px] w-full max-w-[320px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40">
+          <div className="bg-primary-100 dark:bg-primary-950/20 mx-auto block h-full max-h-[400px] w-full max-w-[320px] min-w-[280px] flex-wrap overflow-auto rounded-sm pt-5 shadow-md dark:shadow-gray-800/40">
             <div className="px-6 py-4">
               <h3 className="text-primary-500 mb-4 font-bold uppercase">Latest Recipes</h3>
               <ul>
