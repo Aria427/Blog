@@ -18,7 +18,7 @@ export default function DonateButton() {
           href={siteMetadata.paypal}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg bg-gradient-to-r from-primary-400 to-primary-500 px-4 py-2 text-sm font-medium text-white transition-all hover:from-primary-500 hover:to-primary-600 hover:shadow-md"
+          className="from-primary-400 to-primary-500 hover:from-primary-500 hover:to-primary-600 rounded-lg bg-gradient-to-r px-4 py-2 text-sm font-medium text-white transition-all hover:shadow-md"
           aria-label="Donate via PayPal"
         >
           PayPal
