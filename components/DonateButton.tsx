@@ -9,7 +9,7 @@ export default function DonateButton() {
           href={siteMetadata.revolut}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg bg-gradient-to-r from-primary-500 to-primary-600 px-4 py-2 text-sm font-medium text-white transition-all hover:from-primary-600 hover:to-primary-700 hover:shadow-md"
+          className="from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 rounded-lg bg-gradient-to-r px-4 py-2 text-sm font-medium text-white transition-all hover:shadow-md"
           aria-label="Donate via Revolut"
         >
           Revolut
