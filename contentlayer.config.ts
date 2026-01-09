@@ -25,6 +25,7 @@ import {
   remarkImgToJsx,
   extractTocHeadings,
 } from 'pliny/mdx-plugins/index.js';
+import remarkInstagramEmbed from './plugins/remark-instagram-embed';
 // Rehype packages
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -189,6 +190,7 @@ export default makeSource({
     cwd: process.cwd(),
     remarkPlugins: [
       remarkExtractFrontmatter,
+      remarkInstagramEmbed,
       remarkGfm,
       remarkCodeTitles,
       remarkMath,

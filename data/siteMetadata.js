@@ -12,7 +12,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/Aria427/Blog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/logo-card.png`,
-  // mastodon: 'https://mastodon.social/@mastodonuser',
+
   email: 'saraabdilla274@gmail.com',
   github: 'https://github.com/Aria427',
   // x: 'https://twitter.com/x',
@@ -22,11 +22,11 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/sara-ann-abdilla/',
   // threads: 'https://www.threads.net',
   instagram: 'https://www.instagram.com/sara_abdilla/',
-  // medium: 'https://medium.com',
-  // bluesky: 'https://bsky.app/',
+ 
   // Donation links
   revolut: 'https://revolut.me/sara2704',
   paypal: 'https://paypal.me/SaraAnnAbdilla',
+  
   locale: 'en-GB',
   // set to true if you want a navbar fixed to the top
   stickyNav: true,
