@@ -17,22 +17,24 @@ export default function PrivacyPolicy() {
           Last updated: January 2026
         </p>
       </div>
-      <div className="prose max-w-none pt-8 pb-8 text-justify dark:prose-invert">
+      <div className="prose dark:prose-invert max-w-none pt-8 pb-8 text-justify">
         <h2>Introduction</h2>
         <p>
-          Welcome to {siteMetadata.title}. 
-          This Privacy Policy explains how your information is collected, used, and protected when you visit this website.
+          Welcome to {siteMetadata.title}. This Privacy Policy explains how your information is
+          collected, used, and protected when you visit this website.
         </p>
 
         <h2>Information I Collect</h2>
         <h3>Information You Provide</h3>
         <p>
-          I may collect information you voluntarily provide, such as your email address when you contact me directly.
+          I may collect information you voluntarily provide, such as your email address when you
+          contact me directly.
         </p>
 
         <h3>Automatically Collected Information</h3>
         <p>
-          When you visit my website, I may automatically collect certain information about your device and usage, including:
+          When you visit my website, I may automatically collect certain information about your
+          device and usage, including:
         </p>
         <ul>
           <li>Browser type and version</li>
@@ -50,29 +52,32 @@ export default function PrivacyPolicy() {
           <li>Improve my content and user experience</li>
         </ul>
         <p>
-          You can control cookies through your browser settings. Disabling cookies may affect some functionality of the website.
+          You can control cookies through your browser settings. Disabling cookies may affect some
+          functionality of the website.
         </p>
 
         <h2>Analytics</h2>
         <p>
-          I use privacy-focused analytics to understand how visitors interact with my website.
-          This helps me improve the content and user experience. 
-          The analytics data collected is aggregated and does not personally identify you.
+          I use privacy-focused analytics to understand how visitors interact with my website. This
+          helps me improve the content and user experience. The analytics data collected is
+          aggregated and does not personally identify you.
         </p>
 
         <h2>Third-Party Services</h2>
         <p>I may use the following third-party services:</p>
         <ul>
           <li>
-            <strong>Hosting:</strong> This website is hosted on Vercel, which may collect server logs including IP addresses.
+            <strong>Hosting:</strong> This website is hosted on Vercel, which may collect server
+            logs including IP addresses.
           </li>
           <li>
-            <strong>Advertising:</strong> This website may use Google AdSense to display advertisements.
-            Google AdSense uses cookies to serve ads based on your prior visits to this website or other websites.
-            You can opt out of personalised advertising by visiting{' '}
+            <strong>Advertising:</strong> This website may use Google AdSense to display
+            advertisements. Google AdSense uses cookies to serve ads based on your prior visits to
+            this website or other websites. You can opt out of personalised advertising by visiting{' '}
             <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">
               Google&apos;s Ads Settings
-            </a>.
+            </a>
+            .
           </li>
         </ul>
 
@@ -87,7 +92,8 @@ export default function PrivacyPolicy() {
 
         <h2>Data Retention</h2>
         <p>
-          I retain your personal information only for as long as necessary to fulfil the purposes outlined in this policy, unless a longer retention period is required by law.
+          I retain your personal information only for as long as necessary to fulfil the purposes
+          outlined in this policy, unless a longer retention period is required by law.
         </p>
 
         <h2>Your Rights</h2>
@@ -102,12 +108,15 @@ export default function PrivacyPolicy() {
 
         <h2>Children&apos;s Privacy</h2>
         <p>
-          The website is not directed at children under 13 years of age. I do not knowingly collect personal information from children under 13.
+          The website is not directed at children under 13 years of age. I do not knowingly collect
+          personal information from children under 13.
         </p>
 
         <h2>Changes to This Policy</h2>
         <p>
-          I may update this Privacy Policy from time to time. I will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date.
+          I may update this Privacy Policy from time to time. I will notify you of any changes by
+          posting the new Privacy Policy on this page and updating the &quot;Last updated&quot;
+          date.
         </p>
 
         <h2>Contact Us</h2>

@@ -17,24 +17,24 @@ export default function Terms() {
           Last updated: January 2026
         </p>
       </div>
-      <div className="prose max-w-none pt-8 pb-8 text-justify dark:prose-invert">
+      <div className="prose dark:prose-invert max-w-none pt-8 pb-8 text-justify">
         <h2>Terms of Use</h2>
         <p>
-          Welcome to {siteMetadata.title}. By accessing and using this website, you agree to be bound by these Terms of Use. 
-          If you do not agree with any part of these terms, please do not use this website.
+          Welcome to {siteMetadata.title}. By accessing and using this website, you agree to be
+          bound by these Terms of Use. If you do not agree with any part of these terms, please do
+          not use this website.
         </p>
 
         <h3>Use of Content</h3>
         <p>
-          All content on this website, including but not limited to text, recipes, photographs, and graphics, is the property of {siteMetadata.title} and is protected by copyright laws. 
-          You may:
+          All content on this website, including but not limited to text, recipes, photographs, and
+          graphics, is the property of {siteMetadata.title} and is protected by copyright laws. You
+          may:
         </p>
         <ul>
           <li>View and print content for personal, non-commercial use</li>
           <li>Share links to our content on social media</li>
-          <li>
-            Reference my recipes with proper attribution and a link back to the original post
-          </li>
+          <li>Reference my recipes with proper attribution and a link back to the original post</li>
         </ul>
         <p>You may not:</p>
         <ul>
@@ -57,8 +57,9 @@ export default function Terms() {
 
         <h3>General Information</h3>
         <p>
-          The content on {siteMetadata.title} is provided for general informational and entertainment purposes only. 
-          While I strive to provide accurate and up-to-date information, I make no representations or warranties of any kind, express or implied,
+          The content on {siteMetadata.title} is provided for general informational and
+          entertainment purposes only. While I strive to provide accurate and up-to-date
+          information, I make no representations or warranties of any kind, express or implied,
           about the completeness, accuracy, reliability, or suitability of the information.
         </p>
 
@@ -69,22 +70,24 @@ export default function Terms() {
         </p>
         <ul>
           <li>
-            <strong>Allergies & Dietary Restrictions:</strong> 
-            While I label recipes as gluten-free, lactose-free, or pescatarian where applicable, I am not a certified nutritionist. 
-            Always check ingredient labels and consult with a healthcare professional if you have specific dietary concerns or allergies.
+            <strong>Allergies & Dietary Restrictions:</strong>
+            While I label recipes as gluten-free, lactose-free, or pescatarian where applicable, I
+            am not a certified nutritionist. Always check ingredient labels and consult with a
+            healthcare professional if you have specific dietary concerns or allergies.
           </li>
           <li>
-            <strong>Nutritional Information:</strong> 
-            Any nutritional information provided is an estimate only and may vary based on specific ingredients used, portion sizes, and
-            preparation methods.
+            <strong>Nutritional Information:</strong>
+            Any nutritional information provided is an estimate only and may vary based on specific
+            ingredients used, portion sizes, and preparation methods.
           </li>
           <li>
-            <strong>Cooking Results:</strong> 
-            Results may vary based on equipment, ingredient quality, altitude, and individual cooking skills. I cannot guarantee specific outcomes.
+            <strong>Cooking Results:</strong>
+            Results may vary based on equipment, ingredient quality, altitude, and individual
+            cooking skills. I cannot guarantee specific outcomes.
           </li>
           <li>
-            <strong>Food Safety:</strong> 
-            Please follow proper food safety guidelines when preparing, cooking, and storing food. 
+            <strong>Food Safety:</strong>
+            Please follow proper food safety guidelines when preparing, cooking, and storing food.
             Ensure all ingredients, especially seafood, are fresh and properly handled.
           </li>
         </ul>
@@ -103,16 +106,17 @@ export default function Terms() {
 
         <h3>External Links</h3>
         <p>
-          This website may contain links to external websites. 
-          I am not responsible for the content, privacy practices, or availability of these external sites. 
-          The inclusion of any link does not imply endorsement or approval.
+          This website may contain links to external websites. I am not responsible for the content,
+          privacy practices, or availability of these external sites. The inclusion of any link does
+          not imply endorsement or approval.
         </p>
 
         <h3>Affiliate Links & Sponsorships</h3>
         <p>
-          This website may contain affiliate links or sponsored content. 
-          This means I may earn a small commission if you make a purchase through these links, at no additional cost to you.
-          Any sponsored content will be clearly disclosed. My opinions and recommendations remain my own.
+          This website may contain affiliate links or sponsored content. This means I may earn a
+          small commission if you make a purchase through these links, at no additional cost to you.
+          Any sponsored content will be clearly disclosed. My opinions and recommendations remain my
+          own.
         </p>
 
         <h2>Limitation of Liability</h2>
@@ -131,13 +135,15 @@ export default function Terms() {
 
         <h2>Changes to These Terms</h2>
         <p>
-          I reserve the right to update or modify these terms at any time without prior notice. 
-          Your continued use of the website following any changes constitutes acceptance of those changes.
+          I reserve the right to update or modify these terms at any time without prior notice. Your
+          continued use of the website following any changes constitutes acceptance of those
+          changes.
         </p>
 
         <h2>Governing Law</h2>
         <p>
-          These terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.
+          These terms shall be governed by and construed in accordance with applicable laws, without
+          regard to conflict of law principles.
         </p>
 
         <h2>Contact</h2>

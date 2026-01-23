@@ -31,9 +31,8 @@ const CookieConsent = () => {
     <div className="fixed inset-x-0 bottom-0 z-50 bg-gray-100 dark:bg-gray-800">
       <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-center text-sm text-gray-700 dark:text-gray-300 sm:text-left">
-            This website uses cookies to enhance your experience and analyse site traffic.
-            See the{' '}
+          <p className="text-center text-sm text-gray-700 sm:text-left dark:text-gray-300">
+            This website uses cookies to enhance your experience and analyse site traffic. See the{' '}
             <Link href="/privacy" className="text-primary-500 hover:text-primary-600 underline">
               Privacy Policy
             </Link>{' '}
@@ -48,7 +47,7 @@ const CookieConsent = () => {
             </button>
             <button
               onClick={acceptCookies}
-              className="rounded-md bg-primary-500 px-4 py-2 text-sm font-medium text-white hover:bg-primary-600"
+              className="bg-primary-500 hover:bg-primary-600 rounded-md px-4 py-2 text-sm font-medium text-white"
             >
               Accept
             </button>

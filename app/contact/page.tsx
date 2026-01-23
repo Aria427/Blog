@@ -19,7 +19,7 @@ export default function Contact() {
         </p>
       </div>
       <div className="pt-8 pb-8">
-        <div className="prose max-w-none text-justify dark:prose-invert">
+        <div className="prose dark:prose-invert max-w-none text-justify">
           <p>
             Have a question about a recipe? Want to share your own travel stories? Or just want to
             say hello? I&apos;d love to hear from you!
@@ -35,7 +35,8 @@ export default function Contact() {
             Connect on Social Media
           </h2>
           <p className="mt-3 text-justify text-gray-500 dark:text-gray-400">
-            You can also find me on these platforms. Feel free to reach out or follow along for more travel adventures and recipe inspiration.
+            You can also find me on these platforms. Feel free to reach out or follow along for more
+            travel adventures and recipe inspiration.
           </p>
           <div className="mt-4 flex space-x-5">
             {siteMetadata.email && (
@@ -52,7 +53,6 @@ export default function Contact() {
             )}
           </div>
         </div>
-
       </div>
     </div>
   );
