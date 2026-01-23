@@ -26,6 +26,19 @@ export default function Footer() {
           <DonateButton />
         </div>
         <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <Link href="/contact" className="hover:text-primary-500">
+            Contact
+          </Link>
+          <div>{` • `}</div>
+          <Link href="/privacy" className="hover:text-primary-500">
+            Privacy
+          </Link>
+          <div>{` • `}</div>
+          <Link href="/terms" className="hover:text-primary-500">
+            Terms
+          </Link>
+        </div>
+        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
           <div>{`© ${new Date().getFullYear()}`}</div>
           <div>{` • `}</div>
           <Link href="/">{siteMetadata.title}</Link>
