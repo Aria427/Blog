@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { allBlogs } from 'contentlayer/generated';
+import { allBlogs, allRecipes } from 'contentlayer/generated';
 import siteMetadata from '@/data/siteMetadata';
 
 export const dynamic = 'force-static';
@@ -14,10 +14,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.lastmod || post.date,
     }));
 
-  const routes = ['', 'blog', 'recipes', 'tags'].map((route) => ({
-    url: `${siteUrl}/${route}`,
-    lastModified: new Date().toISOString().split('T')[0],
-  }));
+  const recipeRoutes = allRecipes
+    .filter((recipe) => !recipe.draft)
+    .map((recipe) => ({
+      url: `${siteUrl}/${recipe.path}`,
+      lastModified: recipe.lastmod || recipe.date,
+    }));
 
-  return [...routes, ...blogRoutes];
+  const routes = ['', 'blog', 'recipes', 'tags', 'about', 'contact', 'privacy', 'terms'].map(
+    (route) => ({
+      url: `${siteUrl}/${route}`,
+      lastModified: new Date().toISOString().split('T')[0],
+    })
+  );
+
+  return [...routes, ...blogRoutes, ...recipeRoutes];
 }

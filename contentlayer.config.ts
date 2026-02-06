@@ -171,7 +171,8 @@ export const Recipes = defineDocumentType(() => ({
       type: 'json',
       resolve: (doc) => ({
         '@context': 'https://schema.org',
-        '@type': 'RecipePosting',
+        '@type': 'Recipe',
+        name: doc.title,
         headline: doc.title,
         datePublished: doc.date,
         dateModified: doc.lastmod || doc.date,

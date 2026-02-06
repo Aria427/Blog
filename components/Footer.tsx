@@ -25,7 +25,27 @@ export default function Footer() {
         <div className="mb-8">
           <DonateButton />
         </div>
-        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
+        <div className="mb-2 flex flex-wrap justify-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <Link href="/" className="hover:text-primary-500">
+            Home
+          </Link>
+          <div>{` • `}</div>
+          <Link href="/about" className="hover:text-primary-500">
+            About
+          </Link>
+          <div>{` • `}</div>
+          <Link href="/blog" className="hover:text-primary-500">
+            Blog
+          </Link>
+          <div>{` • `}</div>
+          <Link href="/recipes" className="hover:text-primary-500">
+            Recipes
+          </Link>
+          <div>{` • `}</div>
+          <Link href="/tags" className="hover:text-primary-500">
+            Tags
+          </Link>
+          <div>{` • `}</div>
           <Link href="/contact" className="hover:text-primary-500">
             Contact
           </Link>
