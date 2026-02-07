@@ -36,7 +36,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
     <SectionContainer>
       <ScrollTopAndComment />
       <article>
-        <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
+        <div className="xl:divide-primary-500/30 xl:divide-y">
           <header className="pt-6 xl:pb-6">
             <div className="space-y-1 text-center">
               <dl className="space-y-10">
@@ -54,8 +54,8 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
               </div>
             </div>
           </header>
-          <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 dark:divide-gray-700">
-            <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
+          <div className="divide-primary-500/30 grid-rows-[auto_1fr] divide-y pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0">
+            <div className="divide-primary-500/30 divide-y xl:col-span-3 xl:row-span-2 xl:pb-0">
               <div className="prose dark:prose-invert max-w-none pt-10 pb-8 text-justify">
                 {children}
               </div>
@@ -69,7 +69,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
               )}*/}
             </div>
             <footer>
-              <div className="divide-gray-200 text-sm leading-5 font-medium xl:col-start-1 xl:row-start-2 xl:divide-y dark:divide-gray-700">
+              <div className="divide-primary-500/30 text-sm leading-5 font-medium xl:col-start-1 xl:row-start-2 xl:divide-y">
                 {tags && (
                   <div className="py-4 xl:py-8">
                     <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
