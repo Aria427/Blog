@@ -7,8 +7,21 @@ import CustomLink from './Link';
 import TableWrapper from './TableWrapper';
 import InstagramEmbed from './InstagramEmbed';
 
+const MDXImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+  <Image
+    alt={props.alt || ''}
+    src={props.src || ''}
+    width={768}
+    height={432}
+    sizes="(max-width: 768px) 100vw, 768px"
+    style={{ width: '100%', height: 'auto' }}
+    loading="lazy"
+  />
+);
+
 export const components: MDXComponents = {
   Image,
+  img: MDXImage,
   TOCInline,
   a: CustomLink,
   pre: Pre,
