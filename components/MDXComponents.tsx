@@ -10,7 +10,7 @@ import InstagramEmbed from './InstagramEmbed';
 const MDXImage = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
   <Image
     alt={props.alt || ''}
-    src={props.src || ''}
+    src={String(props.src || '')}
     width={768}
     height={432}
     sizes="(max-width: 768px) 100vw, 768px"
