@@ -16,7 +16,7 @@ export default function Comments({ slug }: { slug: string }) {
         <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
       ) : (
         <button
-          className="rounded-md bg-primary-500 px-4 py-2 font-medium text-white transition hover:bg-primary-600 dark:hover:bg-primary-400"
+          className="bg-primary-500 hover:bg-primary-600 dark:hover:bg-primary-400 rounded-md px-4 py-2 font-medium text-white transition"
           onClick={() => setLoadComments(true)}
         >
           Load Comments
