@@ -51,6 +51,9 @@ export default function Contact() {
             {siteMetadata.linkedin && (
               <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={8} />
             )}
+            {siteMetadata.github && (
+              <SocialIcon kind="github" href={siteMetadata.github} size={8} />
+            )}
           </div>
         </div>
       </div>
