@@ -3,9 +3,20 @@
   "sweet": 10,
   "gluten-free": 20,
   "lactose-free": 20,
+  "chickpeas": 3,
+  "peanuts": 3,
+  "almonds": 3,
+  "chocolate": 10,
   "savoury": 10,
   "vegetarian": 3,
+  "cheese": 3,
   "pescatarian": 3,
+  "eggs": 10,
   "vegan": 3,
-  "dough": 1
+  "rice": 4,
+  "banana": 2,
+  "oats": 3,
+  "lentils": 1,
+  "dough": 1,
+  "cottage-cheese": 1
 }
